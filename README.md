@@ -13,4 +13,10 @@ passwoed folder contains the files which includes the database helper and the mo
 
   The main.dart file contains the Ui app of the first screen and the splash screen and the clock.dart file contains the Ui as well as the back end programming to display the 
 clock in the drawer.
+
+
+To run this project:-
+1) Go to the folder where the project is saved. (in command prompt)
+2) run the 'flutter run' command. (for that u have virtual android device in your computer or connect your phone with debugging mode)
+3) The program will run on your virtual device or mobile phone. 
          
