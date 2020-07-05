@@ -34,11 +34,18 @@ class _goalsListState extends State<goalsList> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Goals'),
+        title: Text(
+          'My Goals',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontFamily: 'OpenSans',
+          ),
+        ),
         elevation: 10.0,
       ),
       body: getGoalsBody(),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.greenAccent,
         onPressed:() {
           debugPrint('FAB Pressed');
           navigateToDetail(Goals('',''), 'Add Goal');
@@ -62,15 +69,27 @@ class _goalsListState extends State<goalsList> {
                       children:<TextSpan>[
                         TextSpan(
                           text: now.day.toString() + ' / ',
-                          style: TextStyle(),
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'OpenSans',
+                            color: Colors.greenAccent,
+                          ),
                         ),
                         TextSpan(
                           text: now.month.toString() + ' / ',
-                          style: TextStyle(),
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'OpenSans',
+                            color: Colors.greenAccent,
+                          ),
                         ),
                         TextSpan(
                           text: now.year.toString(),
-                          style: TextStyle(),
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'OpenSans',
+                            color: Colors.greenAccent,
+                          ),
                         ),
                       ],
                     ),
@@ -82,7 +101,11 @@ class _goalsListState extends State<goalsList> {
               padding: EdgeInsets.only(right: 10.0),
               child: Text(
                 days[now.weekday - 1],
-                style: TextStyle(),
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontFamily: 'OpenSans',
+                  color: Colors.greenAccent,
+                ),
               ),
             ),
           ],
@@ -102,14 +125,14 @@ class _goalsListState extends State<goalsList> {
           var diff = date2.difference(date).inDays;
           return Card(
             child: Container(
-              height: 170.0,
+              height: 200.0,
               child: Column(
                 children:<Widget>[
                   Container(
                     width: MediaQuery.of(context).size.width * 0.90,
                     height: 50.0,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.greenAccent,
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -118,8 +141,9 @@ class _goalsListState extends State<goalsList> {
                         child: Text(
                           goalList[position].description.substring(0, goalList[position].description.length - 1),
                           style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.red,
+                            fontFamily: 'Quicksand',
+                            fontSize: 30.0,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -131,48 +155,89 @@ class _goalsListState extends State<goalsList> {
                       },
                     ),
                   ),
+                  SizedBox(
+                    height: 15.0,
+                  ),
                   Container(
                     child: Text.rich(
                       TextSpan(
                         children:<TextSpan>[
                           TextSpan(
                             text: 'Date: ',
-                            style: TextStyle(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Raleway',
+                              fontSize: 15.0,
+                            ),
                           ),
                           TextSpan(
                             text: goalList[position].comDate,
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              color: Colors.greenAccent,
+                              fontSize: 15.0,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w200,
+                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  Text(
-                    'Days Remaining:\n',
-                    style: TextStyle(),
+                  SizedBox(
+                    height: 15.0,
                   ),
                   Center(
-                    child:Text(
-                      diff.toString(),
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 20.0,
+                    child:Text.rich(
+                      TextSpan(
+                        children:<TextSpan>[
+                          TextSpan(
+                            text: 'Days Remaining : ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Raleway',
+                              fontSize: 15.0,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '  ' + diff.toString(),
+                            style: TextStyle(
+                              color: Colors.greenAccent,
+                              fontSize: 15.0,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w200,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                    )
                   ),
-                  Row(
-                    children: <Widget>[
-                      Checkbox(
-                        value: goalList[position].description.substring(goalList[position].description.length - 1, goalList[position].description.length) == '0' ? false:true,
-                        onChanged: (bool e) => doChanged(goalList[position]),
-                      ),
-                      Text(
-                        goalList[position].description.substring(goalList[position].description.length - 1, goalList[position].description.length) == '0' ? 'Not Completed': 'Completed',
-                        style: TextStyle(
-                          color: goalList[position].description.substring(goalList[position].description.length - 1, goalList[position].description.length) == '0' ? Colors.red:Colors.green,
+                  SizedBox(
+                    height: 15.0,
+                  ),
+                  Divider(
+                    thickness: 2.0,
+                    color: Colors.white12,
+                  ),
+                  Center(
+                    widthFactor: 2.0,
+                    child:Row(
+                      children: <Widget>[
+                        Checkbox(
+                          value: goalList[position].description.substring(goalList[position].description.length - 1, goalList[position].description.length) == '0' ? false:true,
+                          onChanged: (bool e) => doChanged(goalList[position]),
+                          activeColor: Colors.greenAccent,
                         ),
-                      ),
-                    ],
+                        Text(
+                          goalList[position].description.substring(goalList[position].description.length - 1, goalList[position].description.length) == '0' ? 'Not Completed': 'Completed',
+                          style: TextStyle(
+                            color: goalList[position].description.substring(goalList[position].description.length - 1, goalList[position].description.length) == '0' ? Colors.red:Colors.green,
+                            fontWeight: FontWeight.w300,
+                            fontFamily: 'Montserrat',
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -219,7 +284,7 @@ class _goalsListState extends State<goalsList> {
 
   void _showSnackBar(BuildContext context, String message) {
 
-		final snackBar = SnackBar(content: Text(message), duration: Duration(seconds: 2),);
+		final snackBar = SnackBar(content: Text(message), duration: Duration(seconds: 2), backgroundColor: Colors.greenAccent,);
 		Scaffold.of(context).showSnackBar(snackBar);
 	}
 
@@ -262,10 +327,10 @@ class _goalsListState extends State<goalsList> {
       ),
       child: Center(
         child: Container(
-          height: 100.0,
+          height: 150.0,
           width: MediaQuery.of(context).size.width * 0.85,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.purple),
+            border: Border.all(color: Colors.greenAccent),
             borderRadius: BorderRadius.circular(10.0),
             color: Colors.transparent,
           ),
@@ -275,25 +340,37 @@ class _goalsListState extends State<goalsList> {
                 child: Text(
                   'Congrats....!',
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0,
+                    fontFamily: 'Montserrat',
                     color: Colors.white,
-                    fontSize: 20.0,
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 20.0,
               ),
               Center(
                 child: Text(
                   'You have Completed your Goal.',
                   style: TextStyle(
-                    color: Colors.white,
+                    fontWeight: FontWeight.w200,
                     fontSize: 15.0,
+                    fontFamily: 'Montserrat',
+                    color: Colors.white,
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10.0,
+              ),
               RaisedButton(
+                color: Colors.greenAccent,
                 child: Text(
                   'Ok',
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 25.0,
+                    fontFamily: 'Montserrat',
                     color: Colors.white,
                   ),
                 ),

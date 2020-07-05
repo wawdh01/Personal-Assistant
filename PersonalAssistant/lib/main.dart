@@ -1,4 +1,5 @@
 import 'package:PersonalAssistant/achievements/achievement.dart';
+import 'package:PersonalAssistant/clock.dart';
 import 'package:flutter/material.dart';
 import 'package:PersonalAssistant/goals/goals_list.dart';
 import 'package:PersonalAssistant/todoapp/todoui.dart';
@@ -23,6 +24,7 @@ class _NewSplashScreenState extends State<NewSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
 		    
 	    ),
@@ -68,7 +70,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Personal Assistant'),
+          title: Text(
+            'Personal Assistant',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontFamily: 'OpenSans',
+            ),
+          ),
+        ),
+        drawer: new Drawer(
+          elevation: 10.0,
+          child: MyAppClock(),
         ),
       body: Builder(
         builder: (context) => Center(
@@ -87,7 +99,14 @@ class _MyAppState extends State<MyApp> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Text('Goals'),
+                  child: Text(
+                    'Goals',
+                    style: TextStyle(
+                      fontSize: 40.0,
+                      fontFamily: 'Quicksand',
+                      color: Colors.black,
+                    ),
+                  ),
                   onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (builder) => goalsList())),
                 ),
               ),
@@ -104,7 +123,14 @@ class _MyAppState extends State<MyApp> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Text('To do Tasks'),
+                  child: Text(
+                    'To do Tasks',
+                    style: TextStyle(
+                      fontSize: 40.0,
+                      fontFamily: 'Quicksand',
+                      color: Colors.black,
+                    ),
+                  ),
                   onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (builder) => todoui())),
                 ),
               ),
@@ -117,8 +143,15 @@ class _MyAppState extends State<MyApp> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: RaisedButton(
-                  color: Colors.blueGrey,
-                  child: Text('Expense'),
+                  color: Colors.brown,
+                  child: Text(
+                    'Expense',
+                    style: TextStyle(
+                      fontSize: 40.0,
+                      fontFamily: 'Quicksand',
+                      color: Colors.black,
+                    ),
+                  ),
                   onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (builder) => MyAppExpense())),
                 ),
               ),
@@ -134,7 +167,14 @@ class _MyAppState extends State<MyApp> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Text('Password'),
+                  child: Text(
+                    'Password',
+                    style: TextStyle(
+                      fontSize: 40.0,
+                      fontFamily: 'Quicksand',
+                      color: Colors.black,
+                    ),
+                  ),
                   onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (builder) => NoteList())),
                 ),
               ),
@@ -151,7 +191,14 @@ class _MyAppState extends State<MyApp> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Text('Achievement'),
+                  child: Text(
+                    'Achievement',
+                    style: TextStyle(
+                      fontSize: 40.0,
+                      fontFamily: 'Quicksand',
+                      color: Colors.black,
+                    ),
+                  ),
                   onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (builder) => AchievementPage())),
                 ),
               ),
@@ -168,7 +215,14 @@ class _MyAppState extends State<MyApp> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Text('Birthday'),
+                  child: Text(
+                    'Birthday',
+                    style: TextStyle(
+                      fontSize: 40.0,
+                      fontFamily: 'Quicksand',
+                      color: Colors.black,
+                    ),
+                  ),
                   onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (builder) => BirthdayMain())),
                 ),
               ),
@@ -179,11 +233,16 @@ class _MyAppState extends State<MyApp> {
       );
     //);
   }
-  Scaffold homeView() {
+  /*Scaffold homeView() {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Personal Assistant'
+          'Personal Assistant',
+          style: TextStyle(
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         elevation: 10.0,
       ),
@@ -262,5 +321,5 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-  }
+  }*/
 }

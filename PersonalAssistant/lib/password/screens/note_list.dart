@@ -35,7 +35,13 @@ class NoteListState extends State<NoteList> {
     return Scaffold(
 
 	    appBar: AppBar(
-		    title: Text('Password'),
+		    title: Text(
+          'Password',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontFamily: 'OpenSans',
+          ),
+        ),
 	    ),
 
 	    body: getNoteListView(),
@@ -47,7 +53,7 @@ class NoteListState extends State<NoteList> {
 		    },
 
 		    tooltip: 'Add Password',
-
+        backgroundColor: Colors.blue,
 		    child: Icon(Icons.add),
         focusElevation: 10.0,
 	    ),
@@ -58,14 +64,14 @@ class NoteListState extends State<NoteList> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {},
+            Text(
+              'Password',
+              style: TextStyle(
+                color: Colors.blue,
+                fontFamily: 'Montserrat',
+                fontSize: 30.0,
+              ),
             ),
-            IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: () {},
-            )
           ],
         ),
       ),
@@ -80,21 +86,35 @@ class NoteListState extends State<NoteList> {
 			itemCount: count,
 			itemBuilder: (BuildContext context, int position) {
 				return Card(
-					color: Colors.white,
+          borderOnForeground: true,
+					color: Colors.grey[700],
 					elevation: 2.0,
 					child: ListTile(
-
 						leading: CircleAvatar(
 							backgroundColor: getPriorityColor(this.noteList[position].priority),
 							child: getPriorityIcon(this.noteList[position].priority),
 						),
 
-						title: Text(this.noteList[position].title, style: titleStyle,),
+						title: Text(
+              this.noteList[position].title,
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 20.0,
+                fontFamily: 'OpenSans',
+              ),
+            ),
 
-						subtitle: Text(this.noteList[position].date),
+						subtitle: Text(
+              this.noteList[position].date,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15.0,
+                fontFamily: 'OpenSans',
+              ),
+            ),
 
 						trailing: GestureDetector(
-							child: Icon(Icons.delete, color: Colors.grey,),
+							child: Icon(Icons.delete, color: Colors.red,),
 							onTap: () {
 								_delete(context, noteList[position]);
 							},
@@ -116,14 +136,14 @@ class NoteListState extends State<NoteList> {
 	Color getPriorityColor(int priority) {
 		switch (priority) {
 			case 1:
-				return Colors.deepPurple;
+				return Colors.blue;
 				break;
 			case 2:
-				return Colors.deepPurple;
+				return Colors.blue;
 				break;
 
 			default:
-				return Colors.deepPurple;
+				return Colors.blue;
 		}
 	}
 
@@ -153,7 +173,7 @@ class NoteListState extends State<NoteList> {
 
 	void _showSnackBar(BuildContext context, String message) {
 
-		final snackBar = SnackBar(content: Text(message));
+		final snackBar = SnackBar(content: Text(message), duration: Duration(seconds: 1),backgroundColor: Colors.blue,);
 		Scaffold.of(context).showSnackBar(snackBar);
 	}
 

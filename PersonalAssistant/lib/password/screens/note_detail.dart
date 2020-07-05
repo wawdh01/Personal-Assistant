@@ -78,7 +78,11 @@ class NoteDetailState extends State<NoteDetail> {
 								    );
 							    }).toList(),
 
-							    style: textStyle,
+							    style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Quicksand',
+                    fontSize: 20.0,
+                  ),
 
 							    value: getPriorityAsString(note.priority),
 
@@ -96,17 +100,26 @@ class NoteDetailState extends State<NoteDetail> {
 					    padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
 					    child: TextField(
 						    controller: titleController,
-						    style: textStyle,
+						    style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Quicksand',
+                  fontSize: 20.0,
+                ),
 						    onChanged: (value) {
 						    	debugPrint('Something changed in Title Text Field');
 						    	updateTitle();
 						    },
 						    decoration: InputDecoration(
 							    labelText: 'Username or Email',
-							    labelStyle: textStyle,
-							    border: OutlineInputBorder(
-								    borderRadius: BorderRadius.circular(5.0)
-							    )
+							    labelStyle: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Quicksand',
+                    fontSize: 20.0,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(color: Colors.blue),
+                  ),
 						    ),
 					    ),
 				    ),
@@ -116,17 +129,26 @@ class NoteDetailState extends State<NoteDetail> {
 					    padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
 					    child: TextField(
 						    controller: descriptionController,
-						    style: textStyle,
+						    style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Quicksand',
+                  fontSize: 20.0,
+                ),
 						    onChanged: (value) {
 							    debugPrint('Something changed in Description Text Field');
 							    updateDescription();
 						    },
 						    decoration: InputDecoration(
-								    labelText: 'Password',
-								    labelStyle: textStyle,
-								    border: OutlineInputBorder(
-										    borderRadius: BorderRadius.circular(5.0)
-								    )
+								  labelText: 'Password',
+                  labelStyle: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Quicksand',
+                    fontSize: 20.0,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(color: Colors.blue),
+                  ),
 						    ),
 					    ),
 				    ),
@@ -138,10 +160,14 @@ class NoteDetailState extends State<NoteDetail> {
 						    children: <Widget>[
 						    	Expanded(
 								    child: RaisedButton(
-									    color: Theme.of(context).primaryColorDark,
-									    textColor: Theme.of(context).primaryColorLight,
+									    color: Colors.blue,
 									    child: Text(
 										    'Save',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18.0,
+                          fontFamily: 'Montserrat',
+                        ),
 										    textScaleFactor: 1.5,
 									    ),
 									    onPressed: () {
@@ -157,10 +183,14 @@ class NoteDetailState extends State<NoteDetail> {
 
 							    Expanded(
 								    child: RaisedButton(
-									    color: Theme.of(context).primaryColorDark,
-									    textColor: Theme.of(context).primaryColorLight,
+									    color: Colors.blue,
 									    child: Text(
 										    'Delete',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18.0,
+                          fontFamily: 'Montserrat',
+                        ),
 										    textScaleFactor: 1.5,
 									    ),
 									    onPressed: () {
@@ -177,10 +207,14 @@ class NoteDetailState extends State<NoteDetail> {
             Padding(
               padding: EdgeInsets.all(10.0),
               child: RaisedButton(
-                color: Theme.of(context).primaryColorDark,
-                textColor: Theme.of(context).primaryColorLight,
+                color: Colors.blue,
 								child: Text(
 									'Check Strength',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.0,
+                    fontFamily: 'Montserrat',
+                  ),
 									textScaleFactor: 1.5,
 								),
                 onPressed: () {
@@ -212,15 +246,31 @@ class NoteDetailState extends State<NoteDetail> {
                       height: 20.0,
                       color: Colors.red,
                     ),
-                    title: Text('Weak Password'),
+                    title: Text(
+                      'Weak Password',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w100,
+                      ),
+                    ),
                   ),
                   ListTile(
                     leading: Container(
                       width: 20.0,
                       height: 20.0,
-                      color: Colors.deepPurple,
+                      color: Colors.blue,
                     ),
-                    title: Text('Moderate Password'),
+                    title: Text(
+                      'Moderate Password',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
                   ),
                   ListTile(
                     leading: Container(
@@ -228,7 +278,15 @@ class NoteDetailState extends State<NoteDetail> {
                       height: 20.0,
                       color: Colors.green,
                     ),
-                    title: Text('Strong Password'),
+                    title: Text(
+                      'Strong Password',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -327,7 +385,7 @@ class NoteDetailState extends State<NoteDetail> {
 			title: Text(title),
 			content: Text(message),
       elevation: 10.0,
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.blue,
 		);
 		showDialog(
 				context: context,
@@ -372,7 +430,7 @@ class NoteDetailState extends State<NoteDetail> {
     return LinearProgressIndicator(
       value: perdo,
       backgroundColor: Colors.white,
-      valueColor: (perdo*100).toInt() < 25 ? AlwaysStoppedAnimation<Color>(Colors.red) : (perdo*100).toInt() < 60 ? AlwaysStoppedAnimation<Color>(Colors.deepPurple) : AlwaysStoppedAnimation<Color>(Colors.green),
+      valueColor: (perdo*100).toInt() < 25 ? AlwaysStoppedAnimation<Color>(Colors.red) : (perdo*100).toInt() < 60 ? AlwaysStoppedAnimation<Color>(Colors.blue) : AlwaysStoppedAnimation<Color>(Colors.green),
       semanticsLabel: 'Password Strength',
       semanticsValue: perdo.toString(),
     );

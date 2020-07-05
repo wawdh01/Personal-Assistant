@@ -32,7 +32,7 @@ class _MyPieChartState extends State<MyPieChart> {
   }
   List<Color> _colors = [
     Colors.greenAccent,
-    Colors.redAccent
+    Colors.redAccent,
   ];
   @override
   Widget build(BuildContext context) {
@@ -48,6 +48,11 @@ class _MyPieChartState extends State<MyPieChart> {
         chartValueBackgroundColor: Colors.white,
         showLegends: true,
         legendPosition: LegendPosition.right,
+        legendStyle: TextStyle(
+          color: Colors.white,
+          fontFamily: 'Raleway',
+          fontSize: 13.0,
+        ),
         decimalPlaces: 1,
         showChartValueLabel: true,
         initialAngle: 0,

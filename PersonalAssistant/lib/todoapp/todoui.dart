@@ -43,12 +43,6 @@ class _todouiState extends State<todoui> {
     children = [];
     var allrows = await dbhelper.queryall();
     allrows.forEach((row) {
-      /*if (row['todo'].substring(row['todo'].length, row['todo'].length - 1) == '0') {
-        _notCompleted = _notCompleted + 1;
-      }
-      else {
-        _completed = _completed + 1;
-      }*/
       myitems.add(row.toString());
       children.add(Card(
         elevation: 5.0,
@@ -121,8 +115,11 @@ class _todouiState extends State<todoui> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   TextField(
+                    showCursor: true,
+                    cursorColor: Colors.purple,
                     controller: texteditingcontroller,
                     autofocus: true,
+                    
                     onChanged: (_val) {
                       todoedited = _val;
                       todoedited = todoedited + '0';
@@ -133,6 +130,14 @@ class _todouiState extends State<todoui> {
                     ),
                     decoration: InputDecoration(
                       errorText: validated ? null : errtext,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(color: Colors.purple),
+                      ),
                     ),
                   ),
                   Padding(
@@ -200,23 +205,27 @@ class _todouiState extends State<todoui> {
                 ),
                 backgroundColor: Colors.purple,
               ),
-              floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+              //floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
               appBar: AppBar(
                 backgroundColor: Colors.black,
                 centerTitle: true,
                 title: Text(
                   "My Tasks",
                   style: TextStyle(
-                    fontFamily: "Raleway",
-                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    fontFamily: 'OpenSans',
                   ),
                 ),
               ),
-              backgroundColor: Colors.black,
+              //backgroundColor: Colors.black,
               body: Center(
                 child: Text(
                   "No Task Avaliable",
-                  style: TextStyle(fontFamily: "Raleway", fontSize: 20.0),
+                  style: TextStyle(
+                    fontFamily: "Raleway", 
+                    fontSize: 20.0,
+                    color: Colors.white12,
+                  ),
                 ),
               ),
             );
@@ -236,22 +245,25 @@ class _todouiState extends State<todoui> {
                 title: Text(
                   "My Tasks",
                   style: TextStyle(
-                    fontFamily: "Raleway",
-                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    fontFamily: 'OpenSans',
                   ),
                 ),
               ),
-              backgroundColor: Colors.black,
+              //backgroundColor: Colors.grey,
               body: ListView(
                 children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.purple),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
-                      child: MyPieChart(_completed , _notCompleted),
+                  Padding(
+                    padding: EdgeInsets.all(10.0), 
+                    child:Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.purple),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+                        child: MyPieChart(_completed , _notCompleted),
+                      ),
                     ),
                   ),
                   SingleChildScrollView(

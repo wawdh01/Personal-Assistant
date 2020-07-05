@@ -43,7 +43,14 @@ class _AchievementDetailState extends State<AchievementDetail> {
       },
       child: Scaffold(
         appBar: AppBar(
-		      title: Text(appBarTitle),
+		      title: Text(
+            appBarTitle,
+            style: TextStyle(
+              fontSize: 20.0,
+              fontFamily: 'Quicksand',
+              color: Colors.white,
+            ),
+          ),
 		      leading: IconButton(icon: Icon(
 				    Icons.arrow_back),
 				    onPressed: () {
@@ -60,25 +67,42 @@ class _AchievementDetailState extends State<AchievementDetail> {
 					      padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
 					      child: TextField(
 						      controller: titleController,
-						      style: TextStyle(),
+                  showCursor: true,
+                  cursorColor: Colors.green,
+						      style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
 						      onChanged: (value) {
 						    	  debugPrint('Something changed in Title Text Field');
 						    	  updateTitle();
 						      },
 						      decoration: InputDecoration(
 							      labelText: 'Title',
-							      labelStyle: TextStyle(),
-							      border: OutlineInputBorder(
-								      borderRadius: BorderRadius.circular(5.0)
-							      ),
+							      labelStyle: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+							      focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(color: Colors.green),
+                    ),
 						      ),
 					      ),
 				      ),
               Padding(
 					      padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
 					      child: TextField(
+                  showCursor: true,
+                  cursorColor: Colors.green,
 						      controller: descriptionController,
-						      style: TextStyle(),
+						      style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
 						      onChanged: (value) {
 						    	  debugPrint('Something changed in Description Text Field');
 						    	  updateDescription();
@@ -86,9 +110,10 @@ class _AchievementDetailState extends State<AchievementDetail> {
 						      decoration: InputDecoration(
 							      labelText: 'Description',
 							      labelStyle: TextStyle(),
-							      border: OutlineInputBorder(
-								      borderRadius: BorderRadius.circular(5.0),
-							      ),
+							      focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(color: Colors.green),
+                    )
 						      ),
 					      ),
 				      ),
@@ -103,8 +128,14 @@ class _AchievementDetailState extends State<AchievementDetail> {
                     ),
                     Expanded(
                       child: TextField(
+                        showCursor: true,
+                        cursorColor: Colors.green,
                         controller: rankController,
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
                         keyboardType: TextInputType.number,
                         onChanged:(value) {
                           debugPrint('Changed Rank');
@@ -112,10 +143,15 @@ class _AchievementDetailState extends State<AchievementDetail> {
                         },
                         decoration: InputDecoration(
                           labelText: 'Rank',
-							            labelStyle: TextStyle(),
-							            border: OutlineInputBorder(
-								            borderRadius: BorderRadius.circular(5.0),
-							            ),
+							            labelStyle: TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontSize: 20.0,
+                            color: Colors.white,
+                          ),
+							            focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide(color: Colors.green),
+                          ),
                         ),
                       ),
                     ),
@@ -126,6 +162,11 @@ class _AchievementDetailState extends State<AchievementDetail> {
                 padding: EdgeInsets.all(10.0),
                 child: Text(
                   'How much would you rate Your Achievement ? ',
+                  style: TextStyle(
+                    fontFamily: 'Raleway',
+                          fontSize: 15.0,
+                          color: Colors.white,
+                  ),
                 ),
               ),
               Center(
@@ -139,8 +180,8 @@ class _AchievementDetailState extends State<AchievementDetail> {
                   rating: value.toDouble(),
                   size: 40.0,
                   isReadOnly: false,
-                  color: Colors.purple,
-                  borderColor: Colors.black,
+                  color: Colors.green,
+                  borderColor: Colors.white10,
                   spacing: 5.0,
                 ),
               ),
@@ -151,10 +192,14 @@ class _AchievementDetailState extends State<AchievementDetail> {
 						    children: <Widget>[
 						    	Expanded(
 								    child: RaisedButton(
-									    color: Theme.of(context).primaryColorDark,
-									    textColor: Theme.of(context).primaryColorLight,
+									    color: Colors.green,
 									    child: Text(
 										    'Save',
+                        style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: 20.0,
+                          color: Colors.black,
+                        ),
 										    textScaleFactor: 1.5,
 									    ),
 									    onPressed: () {
@@ -170,10 +215,14 @@ class _AchievementDetailState extends State<AchievementDetail> {
 
 							    Expanded(
 								    child: RaisedButton(
-									    color: Theme.of(context).primaryColorDark,
-									    textColor: Theme.of(context).primaryColorLight,
+                      color: Colors.green,
 									    child: Text(
 										    'Delete',
+                        style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          fontSize: 20.0,
+                          color: Colors.black,
+                        ),
 										    textScaleFactor: 1.5,
 									    ),
 									    onPressed: () {
@@ -260,7 +309,7 @@ class _AchievementDetailState extends State<AchievementDetail> {
 			title: Text(title),
 			content: Text(message),
       elevation: 10.0,
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.green,
 		);
 		showDialog(
 				context: context,

@@ -51,7 +51,9 @@ class _GoalDetailState extends State<GoalDetail> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.all(10.0),
-                child: TextFormField(
+                child: TextField(
+                  showCursor: true,
+                  cursorColor: Colors.greenAccent,
                   controller: descriptionController,
                   onChanged: (value) {
 						    	  debugPrint('Something changed in Description Text Field');
@@ -61,19 +63,25 @@ class _GoalDetailState extends State<GoalDetail> {
 							      labelText: 'Description',
 							      labelStyle: TextStyle(
                       color: Colors.grey,
+                      fontFamily: 'OpenSans',
                     ),
 							      border: OutlineInputBorder(
-								      borderRadius: BorderRadius.circular(5.0)
+								      borderRadius: BorderRadius.circular(5.0),
 							      ),
 						      ),
                 ),
+              ),
+              Divider(
+                color: Colors.white10,
+                thickness: 2.0,
               ),
               Center(
                 child:Text(
                   selectedDate.day.toString() + ' / ' + selectedDate.month.toString() + ' / ' + selectedDate.year.toString(),
                   style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.greenAccent,
                     fontSize: 20.0,
+                    fontFamily: 'OpenSans'
                   ),
                 ),
               ),
@@ -81,7 +89,20 @@ class _GoalDetailState extends State<GoalDetail> {
                 onPressed: () {
                   _selectDate(context);
                 },
-                child: Text('Set Date'),
+                child: Text(
+                  'Set Date',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w200,
+                    fontFamily: 'OpenSans',
+                    fontSize: 20.0,
+                  ),
+                ),
+                color: Colors.greenAccent,
+              ),
+              Divider(
+                color: Colors.white10,
+                thickness: 2.0,
               ),
               Padding(
 					      padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
@@ -89,10 +110,15 @@ class _GoalDetailState extends State<GoalDetail> {
 						      children: <Widget>[
 						    	  Expanded(
 								      child: RaisedButton(
-									      color: Theme.of(context).primaryColorDark,
-									      textColor: Theme.of(context).primaryColorLight,
+									      color: Colors.greenAccent,
 									      child: Text(
 										      'Save',
+                          style: TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontSize: 15.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
 										      textScaleFactor: 1.5,
 									      ),
 									      onPressed: () {
@@ -109,10 +135,15 @@ class _GoalDetailState extends State<GoalDetail> {
 
 							      Expanded(
 								      child: RaisedButton(
-									      color: Theme.of(context).primaryColorDark,
-									      textColor: Theme.of(context).primaryColorLight,
+									      color: Colors.greenAccent,
 									      child: Text(
 										      'Delete',
+                          style: TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontSize: 15.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
 										      textScaleFactor: 1.5,
 									      ),
 									      onPressed: () {

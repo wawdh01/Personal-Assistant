@@ -32,7 +32,14 @@ class _BirthDayDetailState extends State<BirthDayDetail> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(appBarTitle),
+          title: Text(
+            appBarTitle,
+            style: TextStyle(
+              fontSize: 20.0,
+              fontFamily: 'Montserrat',
+              color: Colors.white,
+            ),
+          ),
           leading: GestureDetector(
             child: Icon(
               Icons.arrow_back,
@@ -51,47 +58,81 @@ class _BirthDayDetailState extends State<BirthDayDetail> {
 					        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
 					        child: TextField(
 						        controller: nameController,
-						        style: TextStyle(),
+                    cursorColor: Colors.orange,
+                    cursorRadius: Radius.circular(10.0),
+                    showCursor: true,
+						        style: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
 						        onChanged: (value) {
 						    	    debugPrint('Something changed in Title Text Field');
 						    	    updateName();
 						        },
 						        decoration: InputDecoration(
-							        labelText: 'Title',
-							        labelStyle: TextStyle(),
-							        border: OutlineInputBorder(
-								        borderRadius: BorderRadius.circular(5.0)
+							        labelText: 'Birthday Boy Name',
+							        labelStyle: TextStyle(
+                        color: Colors.orange,
+                        fontFamily: 'OpenSans',
+                        fontSize: 20.0,
+                      ),
+							        focusedBorder: OutlineInputBorder(
+								        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(color: Colors.orange),
 							        ),
 						        ),
 					        ),
 				        ),
+                Divider(
+                  thickness: 2.0,
+                  color: Colors.white12,
+                ),
                 Center(
                   child:Text(
                     note.id == null ?
                     selectedDate.day.toString() + ' / ' + selectedDate.month.toString() + ' / ' + selectedDate.year.toString() : note.birthDate,
                     style: TextStyle(
-                      color: Colors.green,
+                      color: Colors.orange,
                       fontSize: 20.0,
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 10.0,
+                ),
                 RaisedButton(
+                  color: Colors.orange,
                   onPressed: () {
                     _selectDate(context);
                   },
-                  child: Text('Set Date'),
+                  child: Text(
+                    'Birthday Date',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18.0,
+                      fontFamily: 'OpenSans',
+                    ),
+                  ),
                 ),
-
+                Divider(
+                  thickness: 2.0,
+                  color: Colors.white12,
+                ),
                 Padding(
 					        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
 					        child: Row(
 						        children: <Widget>[
 						    	    Expanded(
 								        child: RaisedButton(
-									        color: Theme.of(context).primaryColorDark,
-									        textColor: Theme.of(context).primaryColorLight,
+									        color: Colors.orange,
 									        child: Text(
 										        'Save',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              fontFamily: 'OpenSans',
+                            ),
 										        textScaleFactor: 1.5,
 									        ),
 									        onPressed: () {
@@ -108,10 +149,14 @@ class _BirthDayDetailState extends State<BirthDayDetail> {
 
 							        Expanded(
 								        child: RaisedButton(
-									        color: Theme.of(context).primaryColorDark,
-									        textColor: Theme.of(context).primaryColorLight,
+									        color: Colors.orange,
 									        child: Text(
 										        'Delete',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              fontFamily: 'OpenSans',
+                            ),
 										        textScaleFactor: 1.5,
 									        ),
 									        onPressed: () {

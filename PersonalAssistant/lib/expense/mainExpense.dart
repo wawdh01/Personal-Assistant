@@ -14,6 +14,7 @@ class MyAppExpense extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Personal Expenses',
+      debugShowCheckedModeBanner: false,
       /*theme: ThemeData.dark().copyWith(
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
@@ -122,7 +123,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expenses'),
+        title: Text(
+          'Personal Expenses',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontFamily: 'OpenSans',
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -157,6 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.brown,
         child: Icon(
           Icons.add,
         ),

@@ -29,12 +29,20 @@ class _BirthdayMainState extends State<BirthdayMain> {
 		}
 
     return Scaffold(
+      backgroundColor: Colors.grey[700],
       appBar: AppBar(
-        title: Text('My Goals'),
+        title: Text(
+          'BirthDay',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontFamily: 'OpenSans',
+          ),
+        ),
         elevation: 10.0,
       ),
       body: getBirthdayBody(),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.orange,
         onPressed:() {
           debugPrint('FAB Pressed');
           navigateToDetail(Birthday('',''), 'Add Goal');
@@ -58,15 +66,27 @@ class _BirthdayMainState extends State<BirthdayMain> {
                       children:<TextSpan>[
                         TextSpan(
                           text: now.day.toString() + ' / ',
-                          style: TextStyle(),
+                          style: TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontSize: 20.0,
+                            color: Colors.orange,
+                          ),
                         ),
                         TextSpan(
                           text: now.month.toString() + ' / ',
-                          style: TextStyle(),
+                          style: TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontSize: 20.0,
+                            color: Colors.orange,
+                          ),
                         ),
                         TextSpan(
                           text: now.year.toString(),
-                          style: TextStyle(),
+                          style: TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontSize: 20.0,
+                            color: Colors.orange,
+                          ),
                         ),
                       ],
                     ),
@@ -78,7 +98,11 @@ class _BirthdayMainState extends State<BirthdayMain> {
               padding: EdgeInsets.only(right: 10.0),
               child: Text(
                 days[now.weekday - 1],
-                style: TextStyle(),
+                style: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20.0,
+                  color: Colors.orange,
+                ),
               ),
             ),
           ],
@@ -90,7 +114,7 @@ class _BirthdayMainState extends State<BirthdayMain> {
   Container getBirthdayBody() {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: Colors.grey[700],
       ),
       child: ListView.builder(
         itemCount: count,
@@ -115,28 +139,67 @@ class _BirthdayMainState extends State<BirthdayMain> {
             child: GestureDetector(
           child:Container(
             
-            width: 120.0,
-            height: 200.0,
+            width: 150.0,
+            height: 250.0,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.white10, width: 10.0),
+              border: Border.all(color: Colors.black, width: 2.0),
               shape: BoxShape.circle,
               color: Colors.orange,
-              
             ),
             child: Center(
               child: Column(
                 children: <Widget>[
+                  SizedBox(
+                    height: 40.0,
+                  ),
                   Text(
                     goalList[index].name,
-                    style: TextStyle(),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Raleway',
+                      fontSize: 30.0,
+                    ),
                   ),
                   Text(
                     'Next Birthday:',
-                    style: TextStyle(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontFamily: 'OpenSans',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
                   ),
                   Text(
                     diff.toString(),
-                    style: TextStyle(),
+                    style: TextStyle(
+                      fontFamily: 'Monteserrat',
+                      fontSize: 25.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text.rich(
+                    TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Current Age : ',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'Quicksand',
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: (date.year - int.parse(goalList[index].birthDate.substring(0, 4))).toString(),
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'Quicksand',
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -144,6 +207,9 @@ class _BirthdayMainState extends State<BirthdayMain> {
           ),
           onTap: () {
             navigateToDetail(goalList[index], 'Edit BirthDay');
+          },
+          onLongPress: () {
+            _delete(context, goalList[index]);
           },
             ),
           );
@@ -188,7 +254,7 @@ class _BirthdayMainState extends State<BirthdayMain> {
 
   void _showSnackBar(BuildContext context, String message) {
 
-		final snackBar = SnackBar(content: Text(message), duration: Duration(seconds: 2),);
+		final snackBar = SnackBar(content: Text(message), duration: Duration(seconds: 2),backgroundColor: Colors.orange,);
 		Scaffold.of(context).showSnackBar(snackBar);
 	}
 }

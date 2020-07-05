@@ -65,21 +65,56 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Title',
+                labelStyle: TextStyle(
+                  color: Colors.brown,
+                  fontFamily: 'Raleway',
+                  fontSize: 20.0,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.brown),
+                ),
               ),
               // onChanged: (value) => this.titleInput = value,
               controller: _titleController,
               onSubmitted: (_) => _submitData(),
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Raleway',
+                fontSize: 20.0,
+              ),
+            ),
+            SizedBox(
+              height: 15.0,
             ),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Amount',
+                labelStyle: TextStyle(
+                  color: Colors.brown,
+                  fontFamily: 'Raleway',
+                  fontSize: 20.0,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),  
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.brown),
+                ),
               ),
               keyboardType: TextInputType.number,
               onSubmitted: (_) => _submitData(),
-              // onChanged: (value) {
-              //   this.amountInput = value;
-              // },
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Raleway',
+                fontSize: 20.0,
+              ),
               controller: _amountController,
+
             ),
             Container(
               height: 70,
@@ -90,6 +125,11 @@ class _NewTransactionState extends State<NewTransaction> {
                       _selectedDate == null
                           ? 'No Date Chosen!'
                           : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
+                      style: TextStyle(
+                        color: Colors.brown,
+                        fontFamily: 'Raleway',
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                   FlatButton(
@@ -98,6 +138,9 @@ class _NewTransactionState extends State<NewTransaction> {
                       'Choose Date',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        color: Colors.brown,
+                        fontFamily: 'Raleway',
+                        fontSize: 20.0,
                       ),
                     ),
                     onPressed: _presentDatePicker,
@@ -106,9 +149,15 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
             ),
             RaisedButton(
-              child: Text('Add Transaction'),
-              color: Theme.of(context).primaryColor,
-              textColor: Theme.of(context).textTheme.button.color,
+              child: Text(
+                'Add Transaction',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'OpenSans',
+                  fontSize: 20.0,
+                ),
+              ),
+              color: Colors.brown,
               onPressed: _submitData,
             )
           ],

@@ -26,7 +26,7 @@ class TransactionList extends StatelessWidget {
                 Container(
                   height: 200,
                   child: Image.asset(
-                    'assets/images/waiting.png',
+                    'images/waiting.png',
                     fit: BoxFit.cover,
                   ),
                 )
@@ -43,6 +43,7 @@ class TransactionList extends StatelessWidget {
                   child: ListTile(
                     leading: CircleAvatar(
                       radius: 30,
+                      backgroundColor: Colors.brown,
                       child: Padding(
                         padding: EdgeInsets.all(6),
                         child: FittedBox(
@@ -53,10 +54,19 @@ class TransactionList extends StatelessWidget {
                     ),
                     title: Text(
                       transactions[index].title,
-                      style: Theme.of(context).textTheme.title,
+                      style: TextStyle(
+                        color: Colors.brown,
+                        fontSize: 20.0,
+                        fontFamily: 'Raleway',
+                      ),
                     ),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10.0,
+                        fontFamily: 'Montserrat',
+                      ),
                     ),
                     trailing: IconButton(
                       icon: Icon(Icons.delete),

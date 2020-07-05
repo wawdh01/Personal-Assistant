@@ -34,7 +34,7 @@ class _AchievementPageState extends State<AchievementPage> {
 		      navigateToDetail(Achievement('', '', 1, 0), 'Add Achievement');
 		    },
         backgroundColor: Colors.green,
-		    tooltip: 'Add Password',
+		    tooltip: 'Add Achievement',
 
 		    child: Icon(Icons.add),
         focusElevation: 10.0,
@@ -64,6 +64,7 @@ class _AchievementPageState extends State<AchievementPage> {
                   'Achievements',
                   style: TextStyle(
                     fontSize: 20.0,
+                    fontFamily: 'OpenSans',
                   ),
                 ),
               ),
@@ -114,12 +115,17 @@ class _AchievementPageState extends State<AchievementPage> {
                         children:<Widget>[
                           Image.asset(
                             noteList[index].rank == 1 ? 'images/r1.png' : noteList[index].rank == 2 ? 'images/r2.png' : noteList[index].rank == 3 ? 'images/r3.png' : 'images/r4.png',
-                            height: 100.0,
-                            width: 100.0, 
+                            height: 80.0,
+                            width: 80.0, 
                           ),
                           Center(
                             child: Text(
                               noteList[index].title,
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           )
                         ],
@@ -179,7 +185,7 @@ class _AchievementPageState extends State<AchievementPage> {
 
   void _showSnackBar(BuildContext context, String message) {
 
-		final snackBar = SnackBar(content: Text(message), duration: const Duration(milliseconds: 1000),);
+		final snackBar = SnackBar(content: Text(message), duration: const Duration(milliseconds: 1000),backgroundColor: Colors.green,);
 		Scaffold.of(context).showSnackBar(snackBar);
 	}
 }
